@@ -1,0 +1,42 @@
+.container{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-form{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+input,
+textarea{
+    display: block;
+    margin: auto;
+    width: 1000px;
+    height: 25px;
+}
+.add-btn{
+    margin-top: 10px;
+    font-size: 16px;
+}
+.submit{
+    display: flex;
+    justify-content: center;
+
+}
+.submit-btn{
+    width: 200px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    
+}
+
+button{
+    background-color: rgb(135, 190, 252);
+    border-radius: 6px;
+}

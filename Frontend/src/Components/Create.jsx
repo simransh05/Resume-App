@@ -1,0 +1,42 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import '../Create.css'
+
+function Create() {
+  const [resumes, setResumes] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/resume")
+    .then((res) => setResumes(res.data));
+  }, []);
+
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:4000/resume/${id}`);
+    setResumes(resumes.filter(r => r._id !== id));
+  };
+
+  return (
+    <div className="containerCreate">
+      <h1>All Resume</h1>
+      <button className="btn1" onClick={() => navigate("/form") }>Create New</button>
+
+      {resumes.length === 0 ? <p className="empty">No Resume Available</p> :
+        resumes.map((r) => (
+          <div key={r._id} className="elements">
+            <h3>{r.name}</h3>
+            <div className="btnGroup">
+            <button onClick={() => navigate(`/resume/${r._id}`)}>View</button>
+            <button onClick={() => navigate(`/form/${r._id}`)}>Edit</button>
+            <button onClick={() => handleDelete(r._id)}>Delete</button>
+            </div>
+            
+          </div>
+        ))
+      }
+    </div>
+  );
+}
+
+export default Create;

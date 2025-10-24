@@ -1,0 +1,50 @@
+.containerCreate{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.elements{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    width: 600px;
+}
+
+.elements button{
+  padding: 10px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: blueviolet;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn1{
+    display: block;
+  margin: 20px auto;
+  padding: 10px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: blueviolet;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.btnGroup{
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.empty{
+    font-size: large;
+    font-weight: bold;
+}
