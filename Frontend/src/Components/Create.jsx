@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import '../Create.css'
-
+import { toast } from "react-toastify";
 function Create() {
   const [resumes, setResumes] = useState([]);
   const navigate = useNavigate();
@@ -20,16 +20,22 @@ function Create() {
   return (
     <div className="containerCreate">
       <h1>All Resume</h1>
-      <button className="btn1" onClick={() => navigate("/form") }>Create New</button>
+      <button className="btn1" onClick={() => {navigate("/form");
+        toast.success("Opening form to create resume!")
+      } }>Create New</button>
 
       {resumes.length === 0 ? <p className="empty">No Resume Available</p> :
         resumes.map((r) => (
           <div key={r._id} className="elements">
             <h3>{r.name}</h3>
             <div className="btnGroup">
-            <button onClick={() => navigate(`/resume/${r._id}`)}>View</button>
-            <button onClick={() => navigate(`/form/${r._id}`)}>Edit</button>
-            <button onClick={() => handleDelete(r._id)}>Delete</button>
+            <button onClick={() => {navigate(`/resume/${r._id}`);
+          toast.info("Viewing this resume!")}}>View</button>
+            <button onClick={() => {navigate(`/form/${r._id}`);
+          toast.info("Editing this resume!")}}>Edit</button>
+            <button onClick={() => {handleDelete(r._id);
+              toast.error("Resume deleted!")
+            }}>Delete</button>
             </div>
             
           </div>

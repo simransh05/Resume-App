@@ -7,15 +7,23 @@
   display: flex;
   overflow: hidden;
   font-family: 'Times New Roman', Times, serif;
+  width: 210mm;          
+  min-height: 297mm;
 }
 
 .resume-sidebar {
   width: 30%;
-  background: #2c3e50;
+  background: #10457a;
   color: white;
   padding: 30px 20px;
+  padding-top: 70px;
 }
 
+.icon {
+  margin-right: 6px;
+  color: #fcf9f9;  
+  vertical-align: middle;
+}
 .resume-sidebar h2 {
   font-size: 24px;
   margin-bottom: 10px;
@@ -58,7 +66,7 @@
 
 .resume-section h2 {
   font-size: 27px;
-  color: #2c3e50;
+  color: #333;
   border-bottom: 2px solid #2c3e50;
   display: inline-block;
   margin-bottom: 10px;
@@ -71,16 +79,17 @@
 }
 
 .resume-section ul {
-  list-style: disc;
-  padding-left: 20px;
+  list-style: none;
+  padding-left: 0;
 }
+
 .homeBtn{
   display: flex;
   justify-content: center;
 }
 .btn {
   display: inline-block;
-  background: #2c3e50;
+  background: #2c4e70;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -89,6 +98,7 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  width: 150px;
 }
 
 .btn:hover {

@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Create from './Components/Create';
 import Form from './Components/Form';
 import Resume from './Components/Resume';
@@ -6,6 +8,7 @@ import Resume from './Components/Resume';
 function App() {
 
   return (
+    <>
     <Router>
       <Routes>
         <Route path="/" element={<Create />} />
@@ -16,6 +19,8 @@ function App() {
         <Route path="/form/:id" element={<Form />} />
       </Routes>
     </Router>
+    <ToastContainer position="top-center" autoClose={2000} />
+    </>
   );
 }
 

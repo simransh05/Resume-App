@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "../Form.css";
+import { toast } from "react-toastify";
 
 function Form() {
   const [data, setData] = useState({
@@ -60,36 +61,37 @@ function Form() {
       <form onSubmit={handleSubmit} className="resume-form">
 
         <label className="form-label">
-          Name:
+          Name: <span className="required">*</span>
           <input className="form-input" name="name" placeholder="Full Name" value={data.name} onChange={handleChange} required />
         </label><br />
 
         <label className="form-label">
-          Email:
+          Email: <span className="required">*</span>
           <input className="form-input" name="email" type="email" placeholder="Email" value={data.email} onChange={handleChange} required />
         </label><br />
 
         <label className="form-label">
-          Phone number:
+          Phone number: <span className="required">*</span>
           <input className="form-input" name="phone" type="tel" placeholder="Phone" value={data.phone} onChange={handleChange} required />
         </label><br />
 
         <label className="form-label">
-          Summary:
-          <textarea className="form-textarea" name="bio" placeholder="Short Bio" value={data.bio} onChange={handleChange} required />
+          Summary: <span className="required">*</span>
+          <textarea className="form-textarea" name="bio" placeholder="About You" value={data.bio} onChange={handleChange} required />
         </label><br />
 
         <label className="form-label">
-          Education:
+          Education: <span className="required">*</span>
           <input className="form-input" name="education" placeholder="Education" value={data.education} onChange={handleChange} required />
         </label><br />
 
         <label className="form-label">
-          Skills:
+          Skills: <span className="required">*</span>
           {data.skills.map((skill, i) => (
             <input
               key={i}
               className="form-input"
+              placeholder="Add Skill"
               value={skill}
               onChange={(e) => handleArrayChange("skills", i, e.target.value)}
             />
@@ -98,11 +100,12 @@ function Form() {
         </label><br />
 
         <label className="form-label">
-          Projects:
+          Projects: <span className="required">*</span>
           {data.projects.map((p, i) => (
             <input
               key={i}
               className="form-input"
+              placeholder="Add Projects"
               value={p}
               onChange={(e) => handleArrayChange("projects", i, e.target.value)}
             />
@@ -111,11 +114,12 @@ function Form() {
         </label><br />
 
         <label className="form-label">
-          Experience:
+          Experience: <span className="required">*</span>
           {data.experience.map((exp, i) => (
             <input
               key={i}
               className="form-input"
+              placeholder="Add Experience"
               value={exp}
               onChange={(e) => handleArrayChange("experience", i, e.target.value)}
             />
@@ -124,11 +128,11 @@ function Form() {
         </label><br />
 
         <label className="form-label">
-          Date of Birth:
+          Date of Birth: <span className="required">*</span>
           <input className="form-input" name="dob" type="date" value={data.dob} onChange={handleChange} required />
         </label><br />
         <div className="submit">
-          <button className="submit-btn" type="submit">{id ? "Update" : "Preview"}</button>
+          <button className="submit-btn" onClick={()=>toast.info("Previewing your resume!")} type="submit">{id ? "Update" : "Preview" }</button>
         </div>
         
       </form>

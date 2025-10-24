@@ -13,7 +13,8 @@
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
-    width: 600px;
+    width: 700px;
+    border-radius: 6px;
 }
 
 .elements button{
