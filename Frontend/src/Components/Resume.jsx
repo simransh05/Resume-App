@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Resume.css";
 import { FaPhone, FaEnvelope, FaCalendarAlt } from "react-icons/fa";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 function Resume() {
   const { id } = useParams();
@@ -35,8 +35,8 @@ function Resume() {
             <li><FaCalendarAlt className="icon" /> {resumeData.dob}</li>
           </ul>
 
-            <h2>SUMMARY</h2>
-            <p>{resumeData.bio}</p>
+          <h2>SUMMARY</h2>
+          <p>{resumeData.bio}</p>
 
           <h2>SKILLS</h2>
           <ul>
@@ -56,7 +56,9 @@ function Resume() {
             <h2>Experience</h2>
             <ul>
               {resumeData.experience?.map((exp, index) => (
-                <li key={index}>{exp.trim()}</li>
+                <li key={index}>
+                  {resumeData.experience.length > 1 && "• "}{exp.trim()}
+                </li>
               ))}
             </ul>
           </div>
@@ -65,7 +67,9 @@ function Resume() {
             <h2>Projects</h2>
             <ul>
               {resumeData.projects?.map((project, index) => (
-                <li key={index}>{project.trim()}</li>
+                <li key={index}>
+                  {resumeData.projects.length > 1 && "• "}{project.trim()}
+                </li>
               ))}
             </ul>
           </div>
@@ -79,8 +83,10 @@ function Resume() {
       </div>
 
       <div className="homeBtn">
-        <button onClick={() => {navigate("/create");
-           toast.success("Going back home!")}} className="btn"> Home </button>
+        <button onClick={() => {
+          navigate("/create");
+          toast.success("Going back home!")
+        }} className="btn"> Home </button>
       </div>
     </div>
   );

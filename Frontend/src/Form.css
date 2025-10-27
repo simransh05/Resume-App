@@ -1,4 +1,4 @@
-.container{
+.container {
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
@@ -8,42 +8,61 @@
     border-radius: 5px;
 }
 
-.resume-form{
+.resume-form {
     display: flex;
     flex-direction: column;
     font-size: 20px;
 }
 
 input,
-textarea{
+textarea {
     display: block;
     margin: auto;
     width: 1000px;
     height: 25px;
 }
-.add-btn{
+
+.add-btn {
     margin-top: 10px;
     font-size: 16px;
 }
-.submit{
+
+.submit {
     display: flex;
     justify-content: center;
 
 }
-.submit-btn{
+
+.submit-btn {
     width: 200px;
     height: 50px;
     font-size: 14px;
     font-weight: 600;
     margin: 20px;
-    
+
 }
 
-button{
+button {
     background-color: rgb(135, 190, 252);
     border-radius: 6px;
 }
 
-.required{
+.required {
     color: red;
+}
+
+.array-field {
+    display: flex;
+}
+
+.array-field input:first-child {
+    width: 100%;
+}
+
+.array-field input {
+    width: 94%;
+}
+
+.array-field button {
+    width: 6%;
 }

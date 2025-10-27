@@ -44,6 +44,11 @@ function Form() {
     setData({ ...data, [field]: [...data[field], ""] });
   };
 
+  const handleRemove = (field, index) => {
+    const newArray = data[field].filter((_, i) => i !== index);
+    setData({ ...data, [field]: newArray });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (id) {
@@ -62,79 +67,192 @@ function Form() {
 
         <label className="form-label">
           Name: <span className="required">*</span>
-          <input className="form-input" name="name" placeholder="Full Name" value={data.name} onChange={handleChange} required />
-        </label><br />
+          <input
+            className="form-input"
+            name="name"
+            placeholder="Full Name"
+            value={data.name}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
 
         <label className="form-label">
           Email: <span className="required">*</span>
-          <input className="form-input" name="email" type="email" placeholder="Email" value={data.email} onChange={handleChange} required />
-        </label><br />
+          <input
+            className="form-input"
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={data.email}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
 
         <label className="form-label">
           Phone number: <span className="required">*</span>
-          <input className="form-input" name="phone" type="tel" placeholder="Phone" value={data.phone} onChange={handleChange} required />
-        </label><br />
+          <input
+            className="form-input"
+            name="phone"
+            type="tel"
+            placeholder="Phone"
+            value={data.phone}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
 
         <label className="form-label">
           Summary: <span className="required">*</span>
-          <textarea className="form-textarea" name="bio" placeholder="About You" value={data.bio} onChange={handleChange} required />
-        </label><br />
+          <textarea
+            className="form-textarea"
+            name="bio"
+            placeholder="About You"
+            value={data.bio}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
 
         <label className="form-label">
           Education: <span className="required">*</span>
-          <input className="form-input" name="education" placeholder="Education" value={data.education} onChange={handleChange} required />
-        </label><br />
+          <input
+            className="form-input"
+            name="education"
+            placeholder="Education"
+            value={data.education}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
 
         <label className="form-label">
           Skills: <span className="required">*</span>
-          {data.skills.map((skill, i) => (
-            <input
-              key={i}
-              className="form-input"
-              placeholder="Add Skill"
-              value={skill}
-              onChange={(e) => handleArrayChange("skills", i, e.target.value)}
-            />
-          ))}
-          <button type="button" className="add-btn" onClick={() => addField("skills")}>+ Skill</button>
-        </label><br />
+          {data.skills.map((skill, i) => {
+            return (
+              <div key={i} className="array-field">
+                <input
+                  className="form-input"
+                  placeholder="Add Skill"
+                  value={skill}
+                  onChange={(e) => handleArrayChange("skills", i, e.target.value)} />
+                {i > 0 && (
+                  <button
+                    type="button"
+                    className="remove-btn"
+                    onClick={() => handleRemove("skills", i)}
+                  >
+                    ❌
+                  </button>
+                )}
+              </div>
+            );
+          })}
+          <button
+            type="button"
+            className="add-btn"
+            onClick={() => addField("skills")}
+          >
+            + Skill
+          </button>
+        </label>
+        <br />
 
         <label className="form-label">
           Projects: <span className="required">*</span>
           {data.projects.map((p, i) => (
-            <input
-              key={i}
-              className="form-input"
-              placeholder="Add Projects"
-              value={p}
-              onChange={(e) => handleArrayChange("projects", i, e.target.value)}
-            />
+            <div key={i} className="array-field">
+              <input
+                className="form-input"
+                placeholder="Add Project"
+                value={p}
+                onChange={(e) =>
+                  handleArrayChange("projects", i, e.target.value)
+                }
+              />
+              {i > 0 && (
+                <button
+                  type="button"
+                  className="remove-btn"
+                  onClick={() => handleRemove("projects", i)}
+                >
+                  ❌
+                </button>
+              )}
+            </div>
           ))}
-          <button type="button" className="add-btn" onClick={() => addField("projects")}>+ Project</button>
-        </label><br />
+          <button
+            type="button"
+            className="add-btn"
+            onClick={() => addField("projects")}
+          >
+            + Project
+          </button>
+        </label>
+        <br />
 
         <label className="form-label">
           Experience: <span className="required">*</span>
           {data.experience.map((exp, i) => (
-            <input
-              key={i}
-              className="form-input"
-              placeholder="Add Experience"
-              value={exp}
-              onChange={(e) => handleArrayChange("experience", i, e.target.value)}
-            />
+            <div key={i} className="array-field">
+              <input
+                className="form-input"
+                placeholder="Add Experience"
+                value={exp}
+                onChange={(e) =>
+                  handleArrayChange("experience", i, e.target.value)
+                }
+              />
+              {i > 0 && (
+                <button
+                  type="button"
+                  className="remove-btn"
+                  onClick={() => handleRemove("experience", i)}
+                >
+                  ❌
+                </button>
+              )}
+            </div>
           ))}
-          <button type="button" className="add-btn" onClick={() => addField("experience")}>+ Experience</button>
-        </label><br />
+          <button
+            type="button"
+            className="add-btn"
+            onClick={() => addField("experience")}
+          >
+            + Experience
+          </button>
+        </label>
+        <br />
 
         <label className="form-label">
           Date of Birth: <span className="required">*</span>
-          <input className="form-input" name="dob" type="date" value={data.dob} onChange={handleChange} required />
-        </label><br />
+          <input
+            className="form-input"
+            name="dob"
+            type="date"
+            value={data.dob}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+
         <div className="submit">
-          <button className="submit-btn" onClick={()=>toast.info("Previewing your resume!")} type="submit">{id ? "Update" : "Preview" }</button>
+          <button
+            className="submit-btn"
+            onClick={() => toast.info("Previewing your resume!")}
+            type="submit"
+          >
+            {id ? "Update" : "Preview"}
+          </button>
         </div>
-        
+
       </form>
     </div>
   );
