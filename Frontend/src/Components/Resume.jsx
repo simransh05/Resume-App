@@ -30,8 +30,8 @@ function Resume() {
         <div className="resume-sidebar">
           <h2>CONTACT</h2>
           <ul>
-            <li><FaEnvelope className="icon" /> {resumeData.email} |</li>
-            <li><FaPhone className="icon" /> {resumeData.phone} |</li>
+            <li><FaEnvelope className="icon" /> {resumeData.email} </li>
+            <li><FaPhone className="icon" /> {resumeData.phone} </li>
             <li><FaCalendarAlt className="icon" /> {resumeData.dob}</li>
           </ul>
 

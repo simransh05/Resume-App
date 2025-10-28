@@ -1,4 +1,4 @@
-.containerCreate{
+.containerCreate {
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.elements{
+.elements {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -17,35 +17,81 @@
     border-radius: 6px;
 }
 
-.elements button{
-  padding: 10px 25px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: blueviolet;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+.heading {
+    width: 30%;
 }
 
-.btn1{
+.elements button {
+    padding: 10px 25px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: blueviolet;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn1 {
     display: block;
-  margin: 20px auto;
-  padding: 10px 25px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: blueviolet;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+    margin: 20px auto;
+    padding: 10px 25px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: blueviolet;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
 }
 
-.btnGroup{
+.btnGroup {
     display: flex;
     gap: 20px;
     justify-content: space-around;
 }
 
-.empty{
+.empty {
     font-size: large;
     font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .elements {
+        width: 80%;
+    }
+
+    .btnGroup {
+        padding: 10px 20px;
+    }
+
+    .btnGroup button {
+        font-size: 20px;
+    }
+
+    .heading {
+        width: 30%;
+    }
+
+    .btn1 {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .elements {
+        width: 80%;
+    }
+
+    .btnGroup {
+        padding: 10px 10px;
+    }
+
+    .heading {
+        width: 35%;
+    }
+
+    .btnGroup button {
+        font-size: 14px;
+    }
+
 }

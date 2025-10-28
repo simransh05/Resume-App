@@ -27,7 +27,7 @@ function Create() {
       {resumes.length === 0 ? <p className="empty">No Resume Available</p> :
         resumes.map((r) => (
           <div key={r._id} className="elements">
-            <h3>{r.name}</h3>
+            <h3 className="heading">{r.name}</h3>
             <div className="btnGroup">
             <button onClick={() => {navigate(`/resume/${r._id}`);
           toast.info("Viewing this resume!")}}>View</button>

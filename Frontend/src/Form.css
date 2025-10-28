@@ -66,3 +66,30 @@ button {
 .array-field button {
     width: 6%;
 }
+
+@media (max-width:992px){
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    input,
+    textarea{
+        width: 700px;
+    }
+}
+
+@media (max-width:600px){
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    input,
+    textarea{
+        width: 450px;
+    }
+    .array-field input{
+        width: 74%;
+    }
+}
