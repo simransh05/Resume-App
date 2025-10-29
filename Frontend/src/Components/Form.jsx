@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "../Form.css";
 import { toast } from "react-toastify";
+const API = import.meta.env.VITE_BASE_URL;
 
 function Form() {
   const [data, setData] = useState({
@@ -22,7 +23,7 @@ function Form() {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:4000/resume/${id}`)
+      axios.get(`${API}/${id}`)
         .then((res) => {
           setData(res.data);
         });
@@ -49,13 +50,20 @@ function Form() {
     setData({ ...data, [field]: newArray });
   };
 
+  const HandleBack = () => {
+    const confirm = window.confirm('Are you sure you want to go back! Once back the data will be discard');
+    if (confirm) {
+      navigate('/create');
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (id) {
-      await axios.put(`http://localhost:4000/resume/${id}`, data);
+      await axios.put(`${API}/${id}`, data);
       navigate(`/resume/${id}`);
     } else {
-      const res = await axios.post("http://localhost:4000/resume", data);
+      const res = await axios.post(`${API}`, data);
       navigate(`/resume/${res.data._id}`);
     }
   };
@@ -244,6 +252,15 @@ function Form() {
         <br />
 
         <div className="submit">
+          {!id && (
+            <button
+              className="submit-btn"
+              onClick={HandleBack}
+            >
+              Back To Home
+            </button>
+          )}
+
           <button
             className="submit-btn"
             onClick={() => toast.info("Previewing your resume!")}

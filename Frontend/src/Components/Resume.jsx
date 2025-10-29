@@ -4,6 +4,7 @@ import axios from "axios";
 import "../Resume.css";
 import { FaPhone, FaEnvelope, FaCalendarAlt } from "react-icons/fa";
 import { toast } from 'react-toastify'
+const API = import.meta.env.VITE_BASE_URL;
 
 function Resume() {
   const { id } = useParams();
@@ -13,7 +14,7 @@ function Resume() {
   useEffect(() => {
     const fetchResume = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/resume/${id}`);
+        const res = await axios.get(`${API}/${id}`);
         setResumeData(res.data);
       } catch (err) {
         console.log(err);

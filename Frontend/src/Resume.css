@@ -1,3 +1,7 @@
+.resume-panel {
+  border: 1px solid black;
+}
+
 .resume-container {
   max-width: 900px;
   margin: 40px auto;
@@ -96,7 +100,7 @@
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
-  margin-top: 20px;
+  margin: 20px;
   cursor: pointer;
   align-items: center;
   justify-content: center;

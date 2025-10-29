@@ -19,7 +19,7 @@ function App() {
         <Route path="/form/:id" element={<Form />} />
       </Routes>
     </Router>
-    <ToastContainer position="top-center" autoClose={2000} />
+    <ToastContainer position="top-right" autoClose={2000} />
     </>
   );
 }
