@@ -111,6 +111,11 @@
   background: #1a242f;
 }
 
+.project-info{
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (max-width: 992px) {
   .resume-container {
     width: 90%;

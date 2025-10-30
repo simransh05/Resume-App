@@ -7,7 +7,13 @@ const resumeSchema = new mongoose.Schema({
   bio: String,
   education: String,
   skills: [String],
-  projects: [String],
+  projects: [
+    {
+      title: String,
+      description: String,
+      duration: String,
+    }
+  ],
   experience: [String],
   dob: String,
 });

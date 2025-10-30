@@ -13,7 +13,13 @@ function Form() {
     bio: "",
     education: "",
     skills: [""],
-    projects: [""],
+    projects: [
+      {
+        title: "",
+        description: "",
+        duration: ""
+      }
+    ],
     experience: [""],
     dob: ""
   });
@@ -56,6 +62,12 @@ function Form() {
       navigate('/create');
     }
   }
+  const handleProjectChange = (index, field, value) => {
+    const newProjects = [...data.projects];
+    newProjects[index][field] = value;
+    setData({ ...data, projects: newProjects });
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -173,21 +185,33 @@ function Form() {
         <br />
 
         <label className="form-label">
-          Projects: <span className="required">*</span>
-          {data.projects.map((p, i) => (
-            <div key={i} className="array-field">
-              <input
-                className="form-input"
-                placeholder="Add Project"
-                value={p}
-                onChange={(e) =>
-                  handleArrayChange("projects", i, e.target.value)
-                }
-              />
+          {data.projects.map((project, i) => (
+            <div key={i} className="project">
+              <div className="project-data">
+                <input
+                  type="text"
+                  placeholder="Project Title"
+                  value={project.title||""}
+                  onChange={(e) => handleProjectChange(i, "title", e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder="Description"
+                  value={project.description || ""}
+                  onChange={(e) => handleProjectChange(i, "description", e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder="Duration"
+                  value={project.duration || ""}
+                  onChange={(e) => handleProjectChange(i, "duration", e.target.value)}
+                />
+              </div>
+
               {i > 0 && (
                 <button
                   type="button"
-                  className="remove-btn"
+                  className="remove"
                   onClick={() => handleRemove("projects", i)}
                 >
                   ❌
@@ -195,6 +219,7 @@ function Form() {
               )}
             </div>
           ))}
+
           <button
             type="button"
             className="add-btn"

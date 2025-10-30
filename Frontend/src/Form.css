@@ -68,6 +68,47 @@ button {
     width: 6%;
 }
 
+.project{
+    display: flex;
+}
+
+
+.project {
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 10px; */
+  width: 100%;
+}
+
+.project-data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.project-data input {
+  width: 100%;
+}
+
+/* For projects added after the first */
+.project:nth-child(n+2) .project-data {
+  width: 95%;
+}
+
+/* Delete button style */
+.remove {
+  background-color: #8ab4f8;
+  border: 1px solid black;
+  border-radius: 6px;
+  color: red;
+  font-size: 18px;
+  width: 5%;
+  height: 90px;
+  align-self: center;
+  margin-left: 9px;
+  cursor: pointer;
+}
+
 @media (max-width:992px){
     .container{
         display: flex;
