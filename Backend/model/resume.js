@@ -11,11 +11,11 @@ const resumeSchema = new mongoose.Schema({
     {
       title: String,
       description: String,
-      duration: String,
+      start_date: String,
+      end_date:String,
     }
   ],
   experience: [String],
-  dob: String,
 });
 
 module.exports = mongoose.model('Resume',resumeSchema)

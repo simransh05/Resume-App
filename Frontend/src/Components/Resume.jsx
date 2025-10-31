@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Resume.css";
-import { FaPhone, FaEnvelope, FaCalendarAlt } from "react-icons/fa";
+import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { toast } from 'react-toastify'
 const API = import.meta.env.VITE_BASE_URL;
 
@@ -33,7 +33,6 @@ function Resume() {
           <ul>
             <li><FaEnvelope className="icon" /> {resumeData.email} </li>
             <li><FaPhone className="icon" /> {resumeData.phone} </li>
-            <li><FaCalendarAlt className="icon" /> {resumeData.dob}</li>
           </ul>
 
           <h2>SUMMARY</h2>
@@ -71,7 +70,7 @@ function Resume() {
                 <li key={index}>
                   <div className="project-info">
                     <strong>{project.title}</strong><br />
-                    <em>{project.duration}</em><br />
+                    <em>{project.start_date} - {project.end_date}</em><br />
                   </div>
                   <span>{project.description}</span>
                 </li>

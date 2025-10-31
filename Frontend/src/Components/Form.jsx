@@ -17,11 +17,11 @@ function Form() {
       {
         title: "",
         description: "",
-        duration: ""
+        start_date: "",
+        end_date: ""
       }
     ],
     experience: [""],
-    dob: ""
   });
 
   const navigate = useNavigate();
@@ -185,27 +185,57 @@ function Form() {
         <br />
 
         <label className="form-label">
+          <div className="main">
+            Projects: <span className="required">*</span>
+          </div>
           {data.projects.map((project, i) => (
-            <div key={i} className="project">
+            <div key={i} className="project-box">
               <div className="project-data">
-                <input
-                  type="text"
-                  placeholder="Project Title"
-                  value={project.title||""}
-                  onChange={(e) => handleProjectChange(i, "title", e.target.value)}
-                />
-                <input
-                  type="text"
-                  placeholder="Description"
-                  value={project.description || ""}
-                  onChange={(e) => handleProjectChange(i, "description", e.target.value)}
-                />
-                <input
-                  type="text"
-                  placeholder="Duration"
-                  value={project.duration || ""}
-                  onChange={(e) => handleProjectChange(i, "duration", e.target.value)}
-                />
+                <div className={i === 0 ? "project-group" : "project-group-2"}>
+                  <label className={i === 0 ? "label-form" : "label-form-2"}>Project Title:</label>
+                  <input
+                    type="text"
+                    placeholder="Enter project title"
+                    value={project.title || ""}
+                    onChange={(e) => handleProjectChange(i, "title", e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className={i === 0 ? "project-group" : "project-group-2"}>
+                  <label className={i === 0 ? "label-form" : "label-form-2"}>Project Description:</label>
+                  <input
+                    type="text"
+                    placeholder="Enter project description"
+                    value={project.description || ""}
+                    onChange={(e) => handleProjectChange(i, "description", e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className={i === 0 ? "date-fields" : "date-fields-2"}>
+                  <div className={i === 0 ? "project-group" : "project-group-2"}>
+                    <label>Date of Start:</label>
+                    <input
+                      className="dates"
+                      type="date"
+                      value={project.start_date || ""}
+                      onChange={(e) => handleProjectChange(i, "start_date", e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className={i === 0 ? "project-group" : "project-group-2"}>
+                    <label>End of Date:</label>
+                    <input
+                      type="date"
+                      className="dates"
+                      value={project.end_date || ""}
+                      onChange={(e) => handleProjectChange(i, "end_date", e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
               </div>
 
               {i > 0 && (
@@ -260,19 +290,6 @@ function Form() {
           >
             + Experience
           </button>
-        </label>
-        <br />
-
-        <label className="form-label">
-          Date of Birth: <span className="required">*</span>
-          <input
-            className="form-input"
-            name="dob"
-            type="date"
-            value={data.dob}
-            onChange={handleChange}
-            required
-          />
         </label>
         <br />
 

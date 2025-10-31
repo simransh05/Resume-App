@@ -7,7 +7,7 @@ const cors = require('cors')
 app.use(express.json());
 app.use(cors());
 
-app.use('/resume',require('./routes/resume'))
+app.use('/',require('./routes/resume'))
 
 mongoose.connect(process.env.MONGO_URL)
   .then(() => {
