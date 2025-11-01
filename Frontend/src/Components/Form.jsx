@@ -64,6 +64,14 @@ function Form() {
   }
   const handleProjectChange = (index, field, value) => {
     const newProjects = [...data.projects];
+    if (typeof newProjects[index] !== "object") {
+      newProjects[index] = {
+        title: "",
+        description: "",
+        start_date: "",
+        end_date: "",
+      };
+    }
     newProjects[index][field] = value;
     setData({ ...data, projects: newProjects });
   };

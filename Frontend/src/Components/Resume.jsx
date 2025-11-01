@@ -69,7 +69,7 @@ function Resume() {
               {resumeData.projects?.map((project, index) => (
                 <li key={index}>
                   <div className="project-info">
-                    <strong>{project.title}</strong><br />
+                    <strong>{resumeData.projects.length > 1 && index + 1 + " "}{project.title}</strong><br />
                     <em>{project.start_date} - {project.end_date}</em><br />
                   </div>
                   <span>{project.description}</span>
