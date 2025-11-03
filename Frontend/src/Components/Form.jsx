@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "../Form.css";
 import { toast } from "react-toastify";
-const API = import.meta.env.VITE_BASE_URL;
-
+import api from "../util/Api"
 function Form() {
   const [data, setData] = useState({
     name: "",
@@ -29,7 +27,7 @@ function Form() {
 
   useEffect(() => {
     if (id) {
-      axios.get(`${API}/${id}`)
+      api.getResume(id)
         .then((res) => {
           setData(res.data);
         });
@@ -80,10 +78,10 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (id) {
-      await axios.put(`${API}/${id}`, data);
+      api.updateResume(id, data);
       navigate(`/resume/${id}`);
     } else {
-      const res = await axios.post(`${API}`, data);
+      const res = api.addResume(data);
       navigate(`/resume/${res.data._id}`);
     }
   };
@@ -199,62 +197,58 @@ function Form() {
           {data.projects.map((project, i) => (
             <div key={i} className="project-box">
               <div className="project-data">
-                <div className={i === 0 ? "project-group" : "project-group-2"}>
-                  <label className={i === 0 ? "label-form" : "label-form-2"}>Project Title:</label>
+                <div className="project-group-2">
+                  <label className="label-form-2">Project Title:</label>
                   <input
                     type="text"
                     placeholder="Enter project title"
                     value={project.title || ""}
                     onChange={(e) => handleProjectChange(i, "title", e.target.value)}
-                    required
                   />
                 </div>
 
-                <div className={i === 0 ? "project-group" : "project-group-2"}>
-                  <label className={i === 0 ? "label-form" : "label-form-2"}>Project Description:</label>
+                <div className="project-group-2">
+                  <label className="label-form-2">Project Description:</label>
                   <input
                     type="text"
                     placeholder="Enter project description"
                     value={project.description || ""}
                     onChange={(e) => handleProjectChange(i, "description", e.target.value)}
-                    required
                   />
                 </div>
 
-                <div className={i === 0 ? "date-fields" : "date-fields-2"}>
-                  <div className={i === 0 ? "project-group" : "project-group-2"}>
+                <div className="date-fields-2">
+                  <div className="project-group-2">
                     <label>Date of Start:</label>
                     <input
                       className="dates"
                       type="date"
                       value={project.start_date || ""}
                       onChange={(e) => handleProjectChange(i, "start_date", e.target.value)}
-                      required
                     />
                   </div>
 
-                  <div className={i === 0 ? "project-group" : "project-group-2"}>
+                  <div className="project-group-2">
                     <label>End of Date:</label>
                     <input
                       type="date"
                       className="dates"
                       value={project.end_date || ""}
                       onChange={(e) => handleProjectChange(i, "end_date", e.target.value)}
-                      required
                     />
                   </div>
                 </div>
               </div>
 
-              {i > 0 && (
-                <button
-                  type="button"
-                  className="remove"
-                  onClick={() => handleRemove("projects", i)}
-                >
-                  ❌
-                </button>
-              )}
+
+              <button
+                type="button"
+                className="remove"
+                onClick={() => handleRemove("projects", i)}
+              >
+                ❌
+              </button>
+
             </div>
           ))}
 

@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import '../Create.css'
 import { toast } from "react-toastify";
-const API = import.meta.env.VITE_BASE_URL;
-
+import api from "../util/Api"
 function Create() {
   const [resumes, setResumes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`${API}`)
+    api.getAllResume()
     .then((res) => setResumes(res.data));
   }, []);
 
   const handleDelete = async (id) => {
-    await axios.delete(`${API}/${id}`);
+    api.deleteResume(id);
     setResumes(resumes.filter(r => r._id !== id));
   };
 

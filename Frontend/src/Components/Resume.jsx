@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import "../Resume.css";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { toast } from 'react-toastify'
-const API = import.meta.env.VITE_BASE_URL;
-
+import api from "../util/Api"
 function Resume() {
   const { id } = useParams();
   const [resumeData, setResumeData] = useState(null);
@@ -14,7 +12,7 @@ function Resume() {
   useEffect(() => {
     const fetchResume = async () => {
       try {
-        const res = await axios.get(`${API}/${id}`);
+        const res = await api.getResume(id)
         setResumeData(res.data);
       } catch (err) {
         console.log(err);
@@ -35,9 +33,6 @@ function Resume() {
             <li><FaPhone className="icon" /> {resumeData.phone} </li>
           </ul>
 
-          <h2>SUMMARY</h2>
-          <p>{resumeData.bio}</p>
-
           <h2>SKILLS</h2>
           <ul>
             {resumeData.skills?.map((skill, index) => (
@@ -53,6 +48,11 @@ function Resume() {
           </div>
 
           <div className="resume-section">
+            <h2>Summary</h2>
+            <p>{resumeData.bio}</p>
+          </div>
+
+          <div className="resume-section">
             <h2>Experience</h2>
             <ul>
               {resumeData.experience?.map((exp, index) => (
@@ -64,18 +64,30 @@ function Resume() {
           </div>
 
           <div className="resume-section">
-            <h2>Projects</h2>
-            <ul>
-              {resumeData.projects?.map((project, index) => (
-                <li key={index}>
-                  <div className="project-info">
-                    <strong>{resumeData.projects.length > 1 && index + 1 + " "}{project.title}</strong><br />
-                    <em>{project.start_date} - {project.end_date}</em><br />
-                  </div>
-                  <span>{project.description}</span>
-                </li>
-              ))}
-            </ul>
+            {resumeData.projects &&
+              resumeData.projects.filter(
+                (p) => p.title?.trim() || p.description?.trim()
+              ).length > 0 && (
+                <>
+                  <h2>Projects</h2>
+                  <ul>
+                    {resumeData.projects.map((project, index) => (
+                      <li key={index}>
+                        <div className="project-info">
+                          <strong>
+                            {resumeData.projects.length > 1 && index + 1 + " "}
+                            {project.title}
+                          </strong>
+                          <br />
+                          <em>{project.start_date} - {project.end_date}</em>
+                          <br />
+                        </div>
+                        <span>{project.description}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
           </div>
 
           <div className="resume-section">
