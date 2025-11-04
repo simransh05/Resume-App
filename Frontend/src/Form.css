@@ -120,21 +120,18 @@
     background: #e63946;
 }
 
-.project-group,
 .project-group-2 {
     display: flex;
     flex-direction: column;
     margin-bottom: 12px;
 }
 
-.label-form,
 .label-form-2 {
     font-weight: 600;
     margin-bottom: 5px;
     color: #333;
 }
 
-.project-group input,
 .project-group-2 input {
     padding: 10px 12px;
     border-radius: 5px;
@@ -145,14 +142,12 @@
     width: 750px;
 }
 
-.project-group input:focus,
 .project-group-2 input:focus {
     border-color: #6c63ff;
     outline: none;
     box-shadow: 0 0 4px rgba(108, 99, 255, 0.4);
 }
 
-.date-fields,
 .date-fields-2 {
     display: flex;
     gap: 20px;
