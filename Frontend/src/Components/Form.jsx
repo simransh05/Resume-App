@@ -26,12 +26,15 @@ function Form() {
   const { id } = useParams();
 
   useEffect(() => {
-    if (id) {
-      api.getResume(id)
-        .then((res) => {
-          setData(res.data);
-        });
+    const fetchData = async() => {
+      if (id) {
+        await api.getResume(id)
+          .then((res) => {
+            setData(res.data);
+          });
+      }
     }
+    fetchData();
   }, [id]);
 
   const handleChange = (e) => {
@@ -78,10 +81,10 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (id) {
-      api.updateResume(id, data);
+      await api.updateResume(id, data);
       navigate(`/resume/${id}`);
     } else {
-      const res = api.addResume(data);
+      const res = await api.addResume(data);
       navigate(`/resume/${res.data._id}`);
     }
   };
@@ -192,7 +195,7 @@ function Form() {
 
         <label className="form-label">
           <div className="main">
-            Projects: <span className="required">*</span>
+            Projects:
           </div>
           {data.projects.map((project, i) => (
             <div key={i} className="project-box">
